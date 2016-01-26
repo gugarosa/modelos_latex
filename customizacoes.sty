@@ -29,23 +29,19 @@
 % alterando a capa
 \renewcommand{\imprimircapa}{%
   \begin{capa}%
-    \center
+      \center
       \ABNTEXchapterfont{
-        {\large \uppercase {\textbf{Universidade Estadual Paulista\\"Júlio de Mesquita Filho"}} \\Faculdade de Ciências - Campus Bauru}
-
-        \vspace*{0.5cm}
-
-        {\large \uppercase {Departamento de Computação}}
-
-        \vspace*{1cm}
-
-        {\large \uppercase {Bacharelado em Ciência da Computação}}
-
-        %{\ABNTEXchapterfont\large\ImprimirAutor}
-
+        { \uppercase {\textbf{Universidade Estadual Paulista "Júlio de Mesquita Filho"} } } \\
+        { \uppercase {Faculdade de Ciências - Campus Bauru}}\\
+        { \uppercase {Departamento de Computação} }\\
+        { \uppercase {Bacharelado em Ciência da Computação}}
+        
+        \vfill
+        {\ImprimirAutor}
+        
         \vfill
           \begin{center}
-            \bfseries\LARGE \ImprimirTitulo
+            \bfseries \large \ImprimirTitulo
           \end{center}
         \vfill
 
@@ -63,12 +59,12 @@
   \begin{center}
     \center
     \ABNTEXchapterfont{
-      {\large\ImprimirAutor}
+      {\ImprimirAutor}
 
       \vspace*{\fill}\vspace*{\fill}
 
       \begin{center}
-        \bfseries\Large\ImprimirTitulo
+        \bfseries\large\ImprimirTitulo
       \end{center}
 
       \vspace*{\fill}
@@ -77,22 +73,18 @@
         \hspace{.45\textwidth}
         \begin{minipage}{.5\textwidth}
           \SingleSpacing
-          \imprimirpreambulo
+          \imprimirpreambulo \\
+          \imprimirorientadorRotulo~\imprimirorientador \\
+      	   \abntex@ifnotempty{\imprimircoorientador}{%
+             \imprimircoorientadorRotulo~\imprimircoorientador
+          }%
         \end{minipage}%
         \vspace*{\fill}
       }%
 
-      {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-
-      \abntex@ifnotempty{\imprimircoorientador}{%
-        {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-      }%
-
       \vspace*{\fill}
 
-      {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-
-      {\ImprimirLocal\\\imprimirdata}
+      {\ImprimirLocal \\ \imprimirdata}
     }
   \end{center}
 }
