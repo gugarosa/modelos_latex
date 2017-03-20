@@ -4,26 +4,29 @@
 	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
 	oneside,			% para impressão em verso e anverso. Oposto a oneside
 	a4paper,			% tamanho do papel. 
+	
 	% -- opções da classe abntex2 --
 	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
 	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	
 	% -- opções do pacote babel --
 	english,			% idioma adicional para hifenização
 	french,				% idioma adicional para hifenização
 	spanish,			% idioma adicional para hifenização
 	brazil				% o último idioma é o principal do documento
-	]{abntex2}
+]{abntex2}
 
-% ---
-% Pacotes básicos 
-% ---
+% -----------------------------------------
+
+% PACOTES BÁSICOS 
+
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
-\usepackage[T1]{fontenc}		    % Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage[T1]{fontenc}		    % Seleção de códigos de fonte
+\usepackage[utf8]{inputenc}		% Codificação do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
-\usepackage{indentfirst}		    % Indenta o primeiro parágrafo de cada seção.
+\usepackage{indentfirst}		    % Indenta o primeiro parágrafo de cada seção
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% Para melhorias de justificação
@@ -32,32 +35,28 @@
 \usepackage{amssymb,url}
 \usepackage{xcolor,tikz,bm,colortbl}
 \usepackage[br]{nicealgo}       % Pacote para criação de algoritmos
-\usepackage{customizacoes}
+\usepackage{customizacoes}		% Pacote de customizações do abntex2
 
-% ---
-		
-% ---
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-% ---
-\usepackage{lipsum}				% Para geração de dummy text
-% ---
+% -----------------------------------------
 
-% ---
-% Pacotes de citações
-% ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+% PACOTES DE CITAÇÕES
+
+\usepackage[brazilian,hyperpageref]{backref}	 % Páginas com as citações na bibliografia
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
 
-% ---
+% -----------------------------------------
+
+% CONFIGURAÇÕES DE PACOTES
+
 % Configurações do pacote backref
 \renewcommand{\familydefault}{\sfdefault}
+
 % Usado sem a opção hyperpageref de backref
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+
 % Texto padrão antes do número das páginas
 \renewcommand{\backref}{}
+
 % Define os textos da citação
 \renewcommand*{\backrefalt}[4]{
 	\ifcase #1 %
@@ -67,11 +66,11 @@
 	\else
 		Citado #1 vezes nas páginas #2.%
 	\fi}%
-% ---
 
-% ---
-% Informações de dados para CAPA e FOLHA DE ROSTO
-% ---
+% -----------------------------------------
+
+% INFORMAÇÕES DE DADOS PARA CAPA E FOLHA DE ROSTO
+
 \titulo{Título do Texto}
 \autor{Nome do Autor}
 \local{Bauru}
@@ -84,14 +83,13 @@
   \par
   Ciência da Computação}
 \tipotrabalho{Trabalho de Conclusão de Curso}
-% O preambulo deve conter o tipo do trabalho, o objetivo, 
-% o nome da instituição e a área de concentração 
+
+% O preâmbulo deve conter o tipo do trabalho, o objetivo, o nome da instituição e a área de concentração 
 \preambulo{Trabalho de Conclusão de Curso do Curso de Ciência da Computação da Universidade Estadual Paulista ``Júlio de Mesquita Filho'', Faculdade de Ciências, Campus Bauru.}
-% ---
 
+% -----------------------------------------
 
-% ---
-% Configurações de aparência do PDF final
+% CONFIGURAÇÕES PARA O PDF FINAL
 
 % alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
@@ -113,11 +111,10 @@
 		bookmarksdepth=4
 }
 \makeatother
-% --- 
 
-% --- 
-% Espaçamentos entre linhas e parágrafos 
-% --- 
+% -----------------------------------------
+
+% ESPAÇAMENTOS ENTRE LINHAS E PARÁGRAFOS
 
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
@@ -125,15 +122,16 @@
 % Controle do espaçamento entre um parágrafo e outro:
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
 
-% ---
-% compila o indice
-% ---
-\makeindex
-% ---
+% -----------------------------------------
 
-% ----
-% Início do documento
-% ----
+% COMPILANDO O ÍNDICE
+
+\makeindex
+
+% -----------------------------------------
+
+% INÍCIO DO DOCUMENTO
+
 \begin{document}
 
 % Seleciona o idioma do documento (conforme pacotes do babel)
@@ -143,28 +141,18 @@
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-% ----------------------------------------------------------
+% -----------------------------------------
+
 % ELEMENTOS PRÉ-TEXTUAIS
-% ----------------------------------------------------------
-% \pretextual
 
-% ---
 % Capa
-% ---
 \imprimircapa
-% ---
 
-% ---
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
-% ---
 \imprimirfolhaderosto*
-% ---
 
-% ---
-% Inserir a ficha bibliografica
-% ---
-
+% Ficha bibliografica
 % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
 % catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
 % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
@@ -175,7 +163,6 @@
 % \begin{fichacatalografica}
 %     \includepdf{fig_ficha_catalografica.pdf}
 % \end{fichacatalografica}
-
 \begin{fichacatalografica}
 	\sffamily
 	\vspace*{\fill}					% Posição vertical
@@ -205,19 +192,12 @@
 	\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
-% ---
 
-% ---
-% Inserir folha de aprovação
-% ---
-
+% Folha de aprovação
 % Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
 % 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
 % do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
 % imagem da página assinada pela banca com o comando abaixo:
-%
-% \includepdf{folhadeaprovacao_final.pdf}
-%
 \begin{folhadeaprovacao}
 
   \begin{center}
@@ -252,136 +232,116 @@
   \end{center}
   
 \end{folhadeaprovacao}
-% ---
 
-% ---
 % Dedicatória
-% ---
 \begin{dedicatoria}
    \vspace*{\fill}
    \centering
    \noindent
    \textit{Espaço destinado à dedicátoria do texto.} \vspace*{\fill}
 \end{dedicatoria}
-% ---
 
-% ---
 % Agradecimentos
-% ---
 \begin{agradecimentos}
 Espaço destinado aos agradecimentos.
 \end{agradecimentos}
-% ---
 
-% ---
 % Epígrafe
-% ---
 \begin{epigrafe}
     \vspace*{\fill}
 	\begin{flushright}
 		\textit{Espaço destinado à epígrafe.}
 	\end{flushright}
 \end{epigrafe}
-% ---
 
-% ---
+% -----------------------------------------
+
 % RESUMOS
-% ---
 
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-
 Espaço destinado à escrita do resumo.
-
 \textbf{Palavras-chave:} Palavras-chave de seu resumo.
 \end{resumo}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
- 
 Abstract area.
-
 \textbf{Keywords:} Abstract keywords.
- 
  \end{otherlanguage*}
 \end{resumo}
-% ---
 
-% ---
-% inserir lista de ilustrações
-% ---
+% -----------------------------------------
+
+% LISTA DE ILUSTRAÇÕES
+
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
-% ---
 
-% ---
-% inserir lista de tabelas
-% ---
+% -----------------------------------------
+
+% LISTA DE TABELAS
+
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
-% ---
 
-% ---
-% inserir lista de abreviaturas e siglas
-% ---
-% ---
+% -----------------------------------------
 
-% ---
-% inserir o sumario
-% ---
+% LISTA DE ABREVIATURAS E SIGLAS
+
+% -----------------------------------------
+
+% SUMÁRIO
+
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
-% ---
 
+% -----------------------------------------
 
-
-% ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
+
 \pagestyle{simple}
 
-% ----------------------------------------------------------
-% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
-% ----------------------------------------------------------
-
+% Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
 \input{introducao.tex}
 \input{conclusao.tex}
 
-% ---
-% Capitulo com exemplos de comandos inseridos de arquivo externo 
-% ---
-% ---
+% -----------------------------------------
 
-% ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
-% ----------------------------------------------------------
+
 \postextual
-% ----------------------------------------------------------
 
-% ----------------------------------------------------------
-% Referências bibliográficas
-% ----------------------------------------------------------
+% -----------------------------------------
+
+% REFERÊNCIAS BIBLIOGRÁFICAS
+
 \pagestyle{empty}
-\bibliography{references} % o arquivo de bibliografia deve ser importando nessa linha sem o .bib
+\bibliography{references} % o arquivo de bibliografia deve ser importando nessa linha
 
-% ----------------------------------------------------------
-% Glossário
-% ----------------------------------------------------------
-%
+% -----------------------------------------
+
+% GLOSSÁRIO
+
 % Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
 %\glossary
 
-%---------------------------------------------------------------------
+% -----------------------------------------
+
 % INDICE REMISSIVO
-%---------------------------------------------------------------------
+
 \phantompart
 \printindex
-%---------------------------------------------------------------------
+
+% -----------------------------------------
+
+% FINAL DO DOCUMENTO
 
 \end{document}
+
+% -----------------------------------------
