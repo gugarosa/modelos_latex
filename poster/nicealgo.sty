@@ -196,15 +196,15 @@
 % font used for preamble body
 \newcommand{\napreambft}[1]{\emph{#1}}
 
-\newtheorem{algorithm}{ \naiALGORITHM}
+\newtheorem{algorithm}{\rm\bf \naiALGORITHM}
 
 % #1:label for \ref
 \newenvironment{nicealgo}[1]{
 \setcounter{nahaspreamble}{0}\begin{algorithm}\label{#1}\setcounter{nalevel}{0}\setcounter{naline}{1}}
 {\end{tabbing}\end{small}\end{algorithm}}
 
-\newcommand{\naentertab}{\begin{tabbing}\natab}
-\newcommand{\naleavetab}{\end{tabbing}}
+\newcommand{\naentertab}{\begin{tabbing}\natab\it}
+\newcommand{\naleavetab}{\rm\end{tabbing}}
 
 \newcommand{\naname}[1]{{\textrm{\textsc{#1}}}}
 
