@@ -1,0 +1,283 @@
+%%
+%%
+%% Algorithm Drawing Package - Felipe Bergo <bergo@seul.org>
+%% with automatic line numbering, nice display and indentation bars
+%% 
+%% example (bad one ;-):
+%%
+%% \begin{nicealgo}{a.ref}
+%%  \naTITLE{How To Find Prime Numbers}
+%%  \naBEGIN{\naFOR $i=0$ \naTO $+\infty$ \naDO }
+%%  \naEND{ask $i$ if it's prime.}
+%% \end{nicealgo}
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{nicealgo}
+        [2005/04/08 v1.6
+     nice algorithm drawing%
+         ]
+
+%
+%    usage: \usepackage[options]{nicealgo}
+%
+%    optional ( parameters in [] like \usepackage[br,nolines]{nicealgo} ) :
+%      
+%     language options:
+%       English (default)    - any one of english, us, uk, en
+%       Portuguese           - any one of pt, portugues, portuges
+%       Brazilian Portuguese - any one of br, brazil
+%
+%     style options:
+%       Draw lines on indentation
+%       (default)                 - lines
+%       Do not draw lines on
+%       indentation               - nolines
+%       Draw dash before title
+%       (default)                 - dash
+%       Do not draw dash before
+%       title                     - nodash
+%       Less indentation          - narrow
+%
+%  Provided Environments:
+%
+%    \begin{nicealgo}{yourlabel}  ... \end{nicealgo}
+%                           - you can reference the algorithm number
+%                             with \ref{yourlabel}
+%
+%  Provided Commands:
+%
+%    \naTITLE{yourtitle}    - running title of the algorithm (must be
+%                             the first thing inside the nicealgo environment)
+%    \naINPUT{text}         - typesets input variables in the preamble
+%    \naOUTPUT{text}        - typesets output variables in the preamble
+%    \naAUX{text}           - typesets aux variables in the preamble
+%    \naSKIP                - skips fixed vertical space after the preamble
+%
+%    \naBEGIN{text}         - first line of a new indentation level
+%    \na{text}              - algorithm line, current indentation
+%    \naEND{text}           - last line of current indentation
+%    \naENDN{n}{text}       - last line of n indentation levels
+%    \nac{text}             - continuation line, looks ugly.
+%    \nacBEGIN{text}        - continuation line, looks ugly.
+%    \nacEND{text}          - continuation line, looks ugly.
+%    \nacENDN{n}{text}      - continuation line, looks ugly.
+%
+%    \naword{word}          - typesets word in keyword typeface
+%    \naname{text}          - typesets algorithm name as in the title
+%
+%  Existing keywords:
+%
+%    \naWHILE    \naIF    \naTHEN    \naELSE    \naFOR
+%    \naFOREACH  \naDO    \naREPEAT  \naUNTIL   \naRETURN
+%    \naEXIT     \naTO
+%
+%  Additional stuff:
+%
+%    \mget                  - typesets a left arrow for assignment 
+%                             (like a <- 0). Inside math mode only.
+%
+
+  \newcommand{\naiFOR}{fnord }
+  \newcommand{\naiTO}{fnord }
+  \newcommand{\naiDO}{fnord }
+  \newcommand{\naiFOREACH}{fnord }
+  \newcommand{\naiWHILE}{fnord }
+  \newcommand{\naiIF}{fnord }
+  \newcommand{\naiTHEN}{fnord }
+  \newcommand{\naiELSE}{fnord }
+  \newcommand{\naiREPEAT}{fnord }
+  \newcommand{\naiUNTIL}{fnord }
+  \newcommand{\naiRETURN}{fnord }
+  \newcommand{\naiEXIT}{fnord }
+  \newcommand{\naiALGORITHM}{fnord }
+  \newcommand{\naiINPUT}{fnord }
+  \newcommand{\naiOUTPUT}{fnord }
+  \newcommand{\naiAUX}{fnord }
+  \newcommand{\naiMAXPH}{\naiAUX}
+
+  \newif\if@lines\@linestrue
+  \newif\if@dash\@dashtrue
+  \newif\if@narrow\@narrowfalse
+
+\DeclareOption{english}{
+  \renewcommand{\naiFOR}{For }
+  \renewcommand{\naiTO}{to }
+  \renewcommand{\naiDO}{do }
+  \renewcommand{\naiFOREACH}{For each }
+  \renewcommand{\naiWHILE}{While }
+  \renewcommand{\naiIF}{If }
+  \renewcommand{\naiTHEN}{then }
+  \renewcommand{\naiELSE}{Else }
+  \renewcommand{\naiREPEAT}{Repeat }
+  \renewcommand{\naiUNTIL}{Until }
+  \renewcommand{\naiRETURN}{Return }
+  \renewcommand{\naiEXIT}{Exit }
+  \renewcommand{\naiALGORITHM}{Algorithm}
+  \renewcommand{\naiINPUT}{Input:}
+  \renewcommand{\naiOUTPUT}{Output:}
+  \renewcommand{\naiAUX}{Auxiliary:}
+  \renewcommand{\naiMAXPH}{\naiAUX}
+}
+
+\DeclareOption{portugues}{
+  \renewcommand{\naiFOR}{Para }
+  \renewcommand{\naiTO}{At{\'e} }
+  \renewcommand{\naiDO}{Fa{\c{c}}a }
+  \renewcommand{\naiFOREACH}{Para Cada }
+  \renewcommand{\naiWHILE}{Enquanto }
+  \renewcommand{\naiIF}{Se }
+  \renewcommand{\naiTHEN}{Ent{\~{a}}o }
+  \renewcommand{\naiELSE}{Sen{\~{a}}o }
+  \renewcommand{\naiREPEAT}{Repita }
+  \renewcommand{\naiUNTIL}{At{\'e} Que }
+  \renewcommand{\naiRETURN}{Retorne }
+  \renewcommand{\naiEXIT}{Termine }
+  \renewcommand{\naiALGORITHM}{Algoritmo}
+  \renewcommand{\naiINPUT}{Entrada:}
+  \renewcommand{\naiOUTPUT}{Sa{\'\i}da:}
+  \renewcommand{\naiAUX}{Auxiliares:}
+  \renewcommand{\naiMAXPH}{\naiAUX}
+}
+
+%%% proxies for the provided options
+
+\DeclareOption{us}{
+  \ExecuteOptions{english}}
+
+\DeclareOption{uk}{
+  \ExecuteOptions{english}}
+
+\DeclareOption{br}{
+  \ExecuteOptions{portugues}}
+
+\DeclareOption{pt}{
+  \ExecuteOptions{portugues}}
+
+\DeclareOption{brazil}{
+  \ExecuteOptions{portugues}}
+
+\DeclareOption{portuges}{
+  \typeout{Hmm, babel-educated person, it's 'portugues', not 'portuges'.}%
+  \ExecuteOptions{portugues}}
+
+\DeclareOption{lines}{\@linestrue}
+\DeclareOption{nolines}{\@linesfalse}
+
+\DeclareOption{dash}{\@dashtrue}
+\DeclareOption{nodash}{\@dashfalse}
+
+\DeclareOption{narrow}{\@narrowtrue}
+
+%% defaults
+\ExecuteOptions{english}
+\ExecuteOptions{lines}
+\ExecuteOptions{dash}
+\ProcessOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{calc}
+
+\newcounter{nalevel}
+\newcounter{naline}
+\newcounter{natmp}
+\newcounter{nahaspreamble}
+\newlength{\naxxx}
+\newlength{\nayyy}
+\newlength{\nazzz}
+
+\newcommand{\natab}{\if@narrow xxx \= x \= x \= x \= x \= x \= x \= x \= x \= x \= x \= x \= x \= x\kill\else xxx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \= xx \kill\fi}
+\newcommand{\navert}{\if@lines\>$\,$\vrule \@width 0.5pt \>\else \>\fi}
+\newcommand{\nacorner}{\if@lines\>$\,$\setlength{\nazzz}{.09\baselineskip}\addtolength{\nazzz}{0.5pt}\vrule \@width 0.5pt \@height 0.7\baselineskip \@depth -.09\baselineskip\vrule \@width 4pt \@height \nazzz \@depth -.09\baselineskip \>\else \>\fi}
+
+% font used for the preamble headers, likely to be sticky, protect with { } if needed
+\newcommand{\napreambfh}[1]{\textsc{#1}}
+% font used for preamble body
+\newcommand{\napreambft}[1]{\emph{#1}}
+
+\newtheorem{algorithm}{\rm\bf \naiALGORITHM}
+
+% #1:label for \ref
+\newenvironment{nicealgo}[1]{
+\setcounter{nahaspreamble}{0}\begin{algorithm}\label{#1}\setcounter{nalevel}{0}\setcounter{naline}{1}}
+{\end{tabbing}\end{small}\end{algorithm}}
+
+\newcommand{\naentertab}{\begin{tabbing}\natab\it}
+\newcommand{\naleavetab}{\rm\end{tabbing}}
+
+\newcommand{\naname}[1]{{\textrm{\textsc{#1}}}}
+
+% #1: title
+\newcommand{\naTITLE}[1]{\if@dash{--} \fi\naname{#1}\begin{small}\vspace{8pt}\\}
+
+%% the twocolumn 0.48 factor guess is known to work with the IEEEtran class, 
+%% not tested elsewhere.
+\newcommand{\naPREAMBLE}{\setcounter{nahaspreamble}{1}\settowidth{\naxxx}{\napreambfh{\naiMAXPH}}\setlength{\nayyy}{\textwidth}\if@twocolumn\setlength{\nayyy}{0.48\textwidth}\fi\addtolength{\nayyy}{-1.0\naxxx}\addtolength{\nayyy}{-2em}\begin{tabular}{lp{\nayyy}}}
+
+\newcommand{\naBODY}{\ifnum\value{nahaspreamble}>0\end{tabular}\fi\naentertab}
+
+\newcommand{\naINPUT}[1]{\napreambfh{\naiINPUT} & \napreambft{#1} \\}
+\newcommand{\naOUTPUT}[1]{\napreambfh{\naiOUTPUT} & \napreambft{#1} \\}
+\newcommand{\naAUX}[1]{\napreambfh{\naiAUX} & \napreambft{#1} \\}
+
+% prints and increments line number
+\newcommand{\naprintnum}{\emph{\arabic{naline}.}\>\addtocounter{naline}{1}}
+
+\newcommand{\napbar}[1]{\ifnum#1>0\navert
+\setcounter{natmp}{#1}\addtocounter{natmp}{-1}
+\napbar{\value{natmp}}\fi}
+
+% prints bars
+\newcommand{\naprintbars}{\napbar{\value{nalevel}}}
+
+\newcommand{\naprintcorners}[1]{\ifnum#1>0\nacorner\setcounter{natmp}{#1}
+\addtocounter{natmp}{-1}\naprintcorners{\value{natmp}}\fi}
+
+% algorithm line, starting an indentation level
+\newcommand{\naBEGIN}[1]{\naprintnum\naprintbars #1 \addtocounter{nalevel}{1} \\}
+
+% algorithm line, keeping indentation level
+\newcommand{\na}[1]{\naprintnum\naprintbars #1 \\}
+
+% continuation line
+\newcommand{\nac}[1]{\>\naprintbars \> #1 \\}
+
+% continuation line
+\newcommand{\nacBEGIN}[1]{\>\naprintbars \> #1 \addtocounter{nalevel}{1} \\}
+
+% continuation line
+\newcommand{\nacEND}[1]{\nacENDN{1}{#1}}
+
+% continuation line
+\newcommand{\nacENDN}[2]{\>\ifnum#1>0\setcounter{natmp}{#1}\loop
+\addtocounter{nalevel}{-1}\addtocounter{natmp}{-1}
+\ifnum\value{natmp}>0\repeat\fi\naprintbars\ifnum#1>1
+\naprintcorners{#1}\else\naprintcorners{1}\fi \> #2\\}
+
+% algorithm line, last of indentation level
+% optional arg: number of levels to leave
+\newcommand{\naENDN}[2]{\naprintnum\ifnum#1>0\setcounter{natmp}{#1}\loop
+\addtocounter{nalevel}{-1}\addtocounter{natmp}{-1}
+\ifnum\value{natmp}>0\repeat\fi\naprintbars\ifnum#1>1
+\naprintcorners{#1}\else\naprintcorners{1}\fi #2\\}
+
+\newcommand{\naEND}[1]{\naENDN{1}{#1}}
+
+\newcommand{\naword}[1]{\textsf{\textbf{#1}}}
+
+\newcommand{\naWHILE}{\naword{\naiWHILE}}
+\newcommand{\naIF}{\naword{\naiIF}}
+\newcommand{\naTHEN}{\naword{\naiTHEN}}
+\newcommand{\naELSE}{\naword{\naiELSE}}
+\newcommand{\naFOR}{\naword{\naiFOR}}
+\newcommand{\naTO}{\naword{\naiTO}}
+\newcommand{\naFOREACH}{\naword{\naiFOREACH}}
+\newcommand{\naDO}{\naword{\naiDO}}
+\newcommand{\naREPEAT}{\naword{\naiREPEAT}}
+\newcommand{\naUNTIL}{\naword{\naiUNTIL}}
+\newcommand{\naRETURN}{\naword{\naiRETURN}}
+\newcommand{\naEXIT}{\naword{\naiEXIT}}
+
+\newcommand{\mget}{\leftarrow}
+
