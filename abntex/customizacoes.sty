@@ -10,7 +10,7 @@
 %% version 2005/12/01 or later.
 %%
 %% This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %% The Current Maintainer of this work is SEU_NOME, SEU_EMAIL
 %%
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
@@ -26,7 +26,7 @@
 \newcommand{\ImprimirLocal}{\expandafter\MakeUppercase\expandafter{\imprimirlocal}}
 \newcommand{\ImprimirTitulo}{\expandafter\MakeUppercase\expandafter{\imprimirtitulo}}
 
-% alterando a capa
+% alterando a capa para a monografia
 \renewcommand{\imprimircapa}{%
   \begin{capa}%
       \center
@@ -35,10 +35,10 @@
         { \uppercase {Faculdade de Ciências - Campus Bauru}}\\
         { \uppercase {Departamento de Computação} }\\
         { \uppercase {Bacharelado em Ciência da Computação}}
-        
+
         \vfill
         {\ImprimirAutor}
-        
+
         \vfill
           \begin{center}
             \bfseries \large \ImprimirTitulo
@@ -50,8 +50,43 @@
   \end{capa}
 }
 
+% alterando a capa para a proposta
+\newcommand{\imprimircapaproposta}{%
+  \begin{capa}%
+      \center
+      \ABNTEXchapterfont{
+        { \uppercase {\textbf{Universidade Estadual Paulista "Júlio de Mesquita Filho"} } } \\
+        { \uppercase {Faculdade de Ciências - Campus Bauru}}\\
+        { \uppercase {Departamento de Computação} }\\
+        { \uppercase {Bacharelado em Ciência da Computação}}
 
-% folha de rosto 
+        \vfill
+        \begin{center}
+          \bfseries \large \ImprimirTitulo
+        \end{center}
+
+        \vfill
+          \begin{table}[h]
+
+            \centering
+            \renewcommand{\arraystretch}{1.5}
+            \begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+            \hline
+            {Nome: \imprimirautor} & {RA: \RA} \\\hline
+            {Nome do Orientador: \newline \imprimirorientador} & {Assinatura:} \\\hline
+            \end{tabular}
+            \renewcommand{\arraystretch}{1}
+
+          \end{table}
+        \vfill
+
+        \ImprimirLocal \\ \imprimirdata
+      }
+  \end{capa}
+}
+
+
+% folha de rosto
 
 \makeatletter
 
