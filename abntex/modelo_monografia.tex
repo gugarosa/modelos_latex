@@ -18,7 +18,7 @@
 	french,				% idioma adicional para hifenização
 	spanish,			% idioma adicional para hifenização
 	brazil,				% o último idioma é o principal do documento
-	]{abntex2}
+	]{lib/abntex2}
 
 
 % --------------------------------------------------------
@@ -35,9 +35,13 @@
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{lipsum}				% para geração de dummy text
 \usepackage[brazilian,hyperpageref]{}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-\usepackage[br]{nicealgo}       % Pacote para criação de algoritmos
-\usepackage{customizacoes}      % Pacote de customizações do abntex2
+
+\usepackage{silence}
+%Disable all warnings issued by latex starting with "You have..."
+\WarningFilter{latex}{You have requested package}
+\usepackage[alf]{lib/abntex2cite}	% Citações padrão ABNT
+\usepackage[br]{lib/nicealgo}       % Pacote para criação de algoritmos
+\usepackage{lib/customizacoes}      % Pacote de customizações do abntex2
 
 
 % --------------------------------------------------------
@@ -201,25 +205,13 @@
 \end{folhadeaprovacao}
 
 % Dedicatória
-\begin{dedicatoria}
-   \vspace*{\fill}
-   \centering
-   \noindent
-   \textit{Espaço destinado à dedicátoria do texto.} \vspace*{\fill}
-\end{dedicatoria}
+\input{text/pre-text/dedicatoria.tex}
 
 % Agradecimentos
-\begin{agradecimentos}
-Espaço destinado aos agradecimentos.
-\end{agradecimentos}
+\input{text/pre-text/agradecimento.tex}
 
 % Epígrafe
-\begin{epigrafe}
-    \vspace*{\fill}
-	\begin{flushright}
-		\textit{Espaço destinado à epígrafe.}
-	\end{flushright}
-\end{epigrafe}
+\input{text/pre-text/epigrafe.tex}
 
 
 % --------------------------------------------------------
@@ -228,18 +220,10 @@ Espaço destinado aos agradecimentos.
 
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
-\begin{resumo}
-Espaço destinado à escrita do resumo.
-\textbf{Palavras-chave:} Palavras-chave de seu resumo.
-\end{resumo}
+\input{text/pre-text/resumoPT.tex}
 
 % resumo em inglês
-\begin{resumo}[Abstract]
- \begin{otherlanguage*}{english}
-Abstract area.
-\textbf{Keywords:} Abstract keywords.
- \end{otherlanguage*}
-\end{resumo}
+\input{text/pre-text/resumoEN.tex}
 
 
 % --------------------------------------------------------
@@ -267,25 +251,14 @@ Abstract area.
 % --------------------------------------------------------
 
 % inserir lista de abreviaturas e siglas
-\begin{siglas}
-  \item[Fig.] Area of the $i^{th}$ component
-  \item[456] Isto é um número
-  \item[123] Isto é outro número
-  \item[lauro cesar] este é o meu nome
-\end{siglas}
+\input{text/pre-text/abreviatura-sigla.tex}
 
 % --------------------------------------------------------
 % LISTA DE SÍMBOLOS
 % --------------------------------------------------------
 
 % inserir lista de símbolos
-\begin{simbolos}
-  \item[$ \Gamma $] Letra grega Gama
-  \item[$ \Lambda $] Lambda
-  \item[$ \zeta $] Letra grega minúscula zeta
-  \item[$ \in $] Pertence
-\end{simbolos}
-
+\input{text/pre-text/simbolos.tex}
 
 % --------------------------------------------------------
 % SUMÁRIO
@@ -304,8 +277,8 @@ Abstract area.
 \pagestyle{simple}
 
 % Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
-\input{introducao.tex}
-\input{conclusao.tex}
+\input{text/chapters/introducao.tex}
+\input{text/chapters/conclusao.tex}
 
 
 % --------------------------------------------------------
@@ -319,7 +292,7 @@ Abstract area.
 % REFERÊNCIAS BIBLIOGRÁFICAS
 % --------------------------------------------------------
 
-\bibliography{referencias}
+\bibliography{text/chapters/referencias}
 
 
 % --------------------------------------------------------

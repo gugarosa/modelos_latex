@@ -18,7 +18,7 @@
 	french,				% idioma adicional para hifenização
 	spanish,			% idioma adicional para hifenização
 	brazil,				% o último idioma é o principal do documento
-	]{abntex2}
+	]{lib/abntex2}
 
 
 % --------------------------------------------------------
@@ -34,10 +34,14 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{lipsum}				% para geração de dummy text
-\usepackage[brazilian,hyperpageref]{}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-\usepackage[br]{nicealgo}       % Pacote para criação de algoritmos
-\usepackage{customizacoes}      % Pacote de customizações do abntex2
+\usepackage[brazilian,hyperpageref]{}
+
+\usepackage{silence}
+%Disable all warnings issued by latex starting with "You have..."
+\WarningFilter{latex}{You have requested package}
+\usepackage[alf]{lib/abntex2cite}	% Citações padrão ABNT
+\usepackage[br]{lib/nicealgo}       % Pacote para criação de algoritmos
+\usepackage{lib/customizacoes}      % Pacote de customizações do abntex2
 
 
 % --------------------------------------------------------
@@ -149,6 +153,11 @@
 % (o * indica que haverá a ficha bibliográfica)
 \imprimirfolhaderosto
 
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\input{text/pre-text/resumoPT.tex}
+
 % --------------------------------------------------------
 % SUMÁRIO
 % --------------------------------------------------------
@@ -166,14 +175,14 @@
 \pagestyle{simple}
 
 % Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
-\input{introducao.tex}
-\input{conclusao.tex}
+\input{text/chapters/introducao.tex}
+\input{text/chapters/conclusao.tex}
 
 % --------------------------------------------------------
 % REFERÊNCIAS BIBLIOGRÁFICAS
 % --------------------------------------------------------
 
-\bibliography{referencias}
+\bibliography{text/chapters/referencias}
 
 
 % --------------------------------------------------------
