@@ -229,7 +229,7 @@
   %% ajusta nomes padroes do babel
   \renewcommand{\bibname}{Refer\^encias}
   \renewcommand{\indexname}{\'Indice}
-  \renewcommand{\listfigurename}{Lista de ilustra\c{c}\~{o}es}
+  \renewcommand{\listfigurename}{Lista de figuras}
   \renewcommand{\listtablename}{Lista de tabelas}
   %% ajusta nomes usados com a macro \autoref
   \renewcommand{\pageautorefname}{p\'agina}

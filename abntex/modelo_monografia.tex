@@ -24,7 +24,6 @@
 % --------------------------------------------------------
 % PACOTES
 % --------------------------------------------------------
-
 \usepackage{cmap}				% Mapear caracteres especiais no PDF
 \usepackage{lmodern}			% Usa a fonte Latin Modern
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
@@ -34,16 +33,20 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{lipsum}				% para geração de dummy text
+\let\printglossary\relax
+\let\theglossary\relax
+\let\endtheglossary\relax
+\usepackage{lib/anbtex2-glossario}
+
 \usepackage[brazilian,hyperpageref]{}	 % Paginas com as citações na bibl
+\usepackage{microtype} 
 
 \usepackage{silence}
 %Disable all warnings issued by latex starting with "You have..."
 \WarningFilter{latex}{You have requested package}
-\usepackage[alf]{lib/abntex2cite}	% Citações padrão ABNT
+\usepackage[alf, abnt-etal-list=0 ]{lib/abntex2cite}	% Citações padrão ABNT
 \usepackage[br]{lib/nicealgo}       % Pacote para criação de algoritmos
 \usepackage{lib/customizacoes}      % Pacote de customizações do abntex2
-
-
 % --------------------------------------------------------
 % CONFIGURAÇÕES DE PACOTES
 % --------------------------------------------------------
@@ -123,11 +126,20 @@
 
 % --------------------------------------------------------
 % COMPILANDO O ÍNDICE
-% --------------------------------------------------------
-
+% ---------------------------------------------------
 \makeindex
-
-
+% ---
+ 
+% ---
+% GLOSSARIO
+% ---
+\makeglossaries
+% ---
+% Exemplo de configurações do glossairo
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
+ \glsseelist{#2}}
+% ---
+ 
 % --------------------------------------------------------
 % INÍCIO DO DOCUMENTO
 % --------------------------------------------------------
@@ -194,7 +206,10 @@
    \end{center}
    \center Banca Examinadora
    \assinatura{\textbf{\imprimirorientador} \\ Orientador}
-   \assinatura{\textbf{Professor} \\ Convidado 1}
+   \assinatura{\textbf{Professor} \\
+   Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
+   Faculdade de Ciências \\
+   Departamento de Ciência da Computação}
    \assinatura{\textbf{Professor} \\ Convidado 2}
    \begin{center}
     \vspace*{0.5cm}
@@ -251,14 +266,13 @@
 % --------------------------------------------------------
 
 % inserir lista de abreviaturas e siglas
-\input{text/pre-text/abreviatura-sigla.tex}
-
+\imprimirlistadesiglas
 % --------------------------------------------------------
 % LISTA DE SÍMBOLOS
 % --------------------------------------------------------
 
 % inserir lista de símbolos
-\input{text/pre-text/simbolos.tex}
+\imprimirlistadesimbolos
 
 % --------------------------------------------------------
 % SUMÁRIO
