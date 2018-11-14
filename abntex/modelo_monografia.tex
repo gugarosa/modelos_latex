@@ -33,6 +33,7 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{lipsum}				% para geração de dummy text
+
 \let\printglossary\relax
 \let\theglossary\relax
 \let\endtheglossary\relax
@@ -113,6 +114,35 @@
 \makeatother
 
 
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+
 % --------------------------------------------------------
 % ESPAÇAMENTOS ENTRE LINHAS E PARÁGRAFOS
 % --------------------------------------------------------
@@ -169,7 +199,7 @@
 	\sffamily
 	\vspace*{\fill}					% Posição vertical
 	\begin{center}					% Minipage Centralizado
-	\fbox{\begin{minipage}[c][8cm]{15.5cm}		% Largura
+	\fbox{\begin{minipage}[c][7.5cm]{12.5cm}		% Largura
 	\small
 	\imprimirautor
 	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
@@ -206,11 +236,14 @@
    \end{center}
    \center Banca Examinadora
    \assinatura{\textbf{\imprimirorientador} \\ Orientador}
-   \assinatura{\textbf{Professor} \\
+   \assinatura{\textbf{Professor Convidado 1} \\
    Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
    Faculdade de Ciências \\
    Departamento de Ciência da Computação}
-   \assinatura{\textbf{Professor} \\ Convidado 2}
+   \assinatura{\textbf{Professor Convidado 2} \\
+   Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
+   Faculdade de Ciências \\
+   Departamento de Ciência da Computação}
    \begin{center}
     \vspace*{0.5cm}
     \par
@@ -250,6 +283,14 @@
 \listoffigures*
 \cleardoublepage
 
+
+% ---
+% inserir lista de quadros
+% ---
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+\cleardoublepage
+% ---
 
 % --------------------------------------------------------
 % LISTA DE TABELAS
@@ -291,8 +332,8 @@
 \pagestyle{simple}
 
 % Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
-\input{text/chapters/introducao.tex}
-\input{text/chapters/conclusao.tex}
+\input{text/chapters/introducao}
+\input{text/chapters/conclusao}
 
 
 % --------------------------------------------------------

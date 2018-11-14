@@ -66,6 +66,31 @@ As tabelas também podem ser referenciadas como se fossem seções ou figuras, p
 
 Quando uma tabela é criada com begin\{table\}, ela é automaticamente adicionada à Lista de Tabelas.
 
+\section{Quadros}
+
+Este modelo vem com o ambiente \texttt{quadro} e impressão de Lista de quadros 
+configurados por padrão. Verifique um exemplo de utilização:
+
+\begin{quadro}[htb]
+\caption{\label{quadro_exemplo}Exemplo de quadro}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Pessoa} & \textbf{Idade} & \textbf{Peso} & \textbf{Altura} \\ \hline
+	Marcos & 26    & 68   & 178    \\ \hline
+	Ivone  & 22    & 57   & 162    \\ \hline
+	...    & ...   & ...  & ...    \\ \hline
+	Sueli  & 40    & 65   & 153    \\ \hline
+\end{tabular}
+\fonte{Autor.}
+\end{quadro}
+
+Este parágrafo apresenta como referenciar o quadro no texto, requisito
+obrigatório da ABNT. 
+Primeira opção, utilizando \texttt{autoref}: Ver o \autoref{quadro_exemplo}. 
+Segunda opção, utilizando  \texttt{ref}: Ver o Quadro \ref{quadro_exemplo}.
+
+
+
 \section{Algoritmos}
 \label{s.algoritmos}
 
@@ -104,16 +129,69 @@ O pacote nicealgo incluído nos arquivos desse projeto é responsável por dispo
 \section{Figuras}
 \label{s.figuras}
 
-Abaixo podemos identificar a criação e referência da Figura~\ref{f.disposicao_mercado}. Atente-se ao código para perceber um possível redimensionamento com a função scale e o caminho de onde a figura deve ser retirada.
+Este parágrafo apresenta como referenciar figura no texto, requisito obrigatório da ABNT.
+Primeira opção, utilizando \texttt{autoref}: Ver a \autoref{f.disposicao_mercado}. 
+Segunda opção, utilizando  \texttt{ref}: Ver a Figura \ref{f.disposicao_mercado}.
+
+Atente-se ao código para perceber um possível redimensionamento com a função scale e o caminho de onde a figura deve ser retirada.
 
 Quando uma figura é criada com begin\{figure\}, ela é automaticamente adicionada à Lista de Ilustrações.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \caption{\small Exemplo do ambiente TeXworks.}
 \centering
 \includegraphics[scale=0.50]{figs/tex_exemplo.png}
 \label{f.disposicao_mercado}
 \legend{\small Fonte: Elaborada pelo autor.}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{1}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{2}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{3}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{4}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{5}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Imagem 1 da minipage} \label{6}
+    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
+    \legend{Fonte: Produzido pelos autores}
 \end{figure}
 
 \section{Equações}
@@ -166,7 +244,7 @@ De acordo com \acs{ABNT}...
 
 \sigla{SIRGAS2000}{Sistema de referência geocêntrico para as américas época 2000.4}
 
-\sigla{UFOPA}{Universidade Federal do Oeste do Pará}
+\sigla{UNESP}{Universidade Estadual Paulista "Júlio de Mesquita Filho" }
 
 \sigla{abnTeX}{ABsurdas Normas para TeX}
 

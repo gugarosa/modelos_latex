@@ -1,5 +1,5 @@
 %% abntex2-num.bst, v<VERSION> laurocesar
-%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -13,7 +13,7 @@
 %% 
 %% The Current Maintainer of this work is the abnTeX2 team, led
 %% by Lauro César Araujo. Further information are available on 
-%% http://abntex2.googlecode.com/
+%% http://www.abntex.net.br/
 %%
 %% Creator and original mantainer: Gerald Weber <gweber@codigolivre.org.br>
 %% Copyright 2001-2003 by the abnTeX group at http://abntex.codigolivre.org.br
@@ -22,72 +22,7 @@
 %% The original source files were:
 %% merlin.mbs  (with options: `babel,nm-revf,aunm-semi,nmlm,x3,m3,dt-end,yr-com,xmth,vnum-x,volp-com,jwdpg,jwdvol,num-xser,btit-rm,bt-rm,pg-bk,add-pub,pub-date,pub-xpar,pre-pub,isbn,issn,pp,ed,abr,ednx,nfss')
 %% These sourefiles are copyrighted by Patrick W Daly
-%%
-%% Revision history:
-%%
-%% 2013/05/26 laurocesar 
-%%  Corrige problemas de duplicação de ano nas funções article e jornalpart
-%%
-%% 2013/02/28 caduarte7@gmail.com 
-%%  Complete Fix iso-690-1987 option: year was placed for 
-%%  twicebooklet, journalpart, manual, misc, unpublished, patent and unpublished
-%%
-%% 2013/02/21 21h52 caduarte7@gmail.com (revision by laurocesar)
-%%  Fix iso-690-1987 option: year was placed twice
-%%
-%% 2012/12/12 22h14 laurocesar
-%% Fork of the version v 1.42.2.1 2004/11/02 15:18:21 created by gweber
-%% Change file name to from abnt-num.bst to abntex2-num.bst
-%% Removed CVS revision automation
-%% Modify referentes of abnt-alf.bst and abnt-num.bst 
-%%
-%% The original revision history is the following:
-%%
-%% Nota sobre os Logs: Se aparecer abnt-num é por que as aletarções foram feitas
-%% neste arquivo e depois copiadas para abnt.alf e vice-versa.
-%%
-%% $Log: abnt-num.bst,v $
-%% Revision 1.42.2.1  2004/11/02 15:18:21  gweber
-%% correcao do bug 239
-%%
-%% Revision 1.42  2003/07/23 12:06:01  gweber
-%% O comando apply.title.command agora atua sobre todas as ocorrências de title, mas
-%% não sobre campos title que estão vazios.
-%%
-%% Revision 1.41  2003/07/22 16:26:02  gweber
-%% Adicionada a opção abnt-title-command. Com esta opção pode-se definir o comando
-%% \bibtextitlecommand que permite formatações especiais no titulo.
-%%
-%% Revision 1.40  2003/06/05 14:34:05  gweber
-%% Introduzido filtro.url.tex e filtro.url.html, a função do primeiro é alterar uma url de tal maneira
-%% que que o TeX possa processá-la sem problemas. A do segundo é fazer a mesma coisa
-%% para a url que é passada para html ou hyperref.
-%%
-%% Revision 1.39  2003/06/04 13:18:07  gweber
-%% Introduzidas as opções hyperref para abnt.url.package com isso os campos url são formatados agora como hyperlinks ativos.
-%% Também foram acrescentadas a opção abnt.doi que permite selecionar o tratamento que recebe uma url começada com doi:
-%%
-%% Revision 1.38  2003/04/08 00:39:39  gweber
-%% Implementada a entrada @hidden que gera um \hiddenbibitem (só alf),
-%% ou seja uma entrada que não aparece na lista de referências e que pode ser
-%% usada com o comando \apud e \apudonline.
-%%
-%% Revision 1.37  2003/04/01 19:34:47  gweber
-%% consertado bug de ordenação alfabética, agora a ordenação em sort.format.names é igual a de format.names
-%%
-%% Revision 1.36  2003/03/25 14:06:20  gweber
-%% Inicio da adaptação para ISO 690:1987.
-%% Acrescentada a opção iso-author-punctuation cuja opção
-%% void gera iniciais juntas e sem ponto.
-%%
-%% Revision 1.35  2003/03/22 22:59:13  gweber
-%% abnt-nbr10520 foi substituído por abnt-cite-style.
-%% A função recompose.name recompõe um nome complicado, mas a função
-%% ainda é experimental e não está sendo usada no momento. Mesmo
-%% porque há nomes que o próprio bibtex tem problemas para tratar.
-%% A função presort for modificada de modo a poder manter o SORT em
-%% abnt-num sem realmente ordenar alfabeticamente.
-%%
+
 ENTRY
   { address author
     booktitle booksubtitle
@@ -974,14 +909,16 @@ FUNCTION {format.journal.pages}
 
 FUNCTION {get.url.type}
 {s #1 #5 substring$ "http:" = {http.url}
+ {s #1 #6 substring$ "https:" = {http.url}
   {s #1 #5 substring$ "file:" = {file.url}
-     {s #1 #4 substring$ "ftp:"  = {ftp.url}
-       {s #1 #4 substring$ "doi:"  = {doi.url}
-         {s #1 #7 substring$ "mailto:" = {mailto.url} {unknown.url} if$}
-       if$}
+   {s #1 #4 substring$ "ftp:"  = {ftp.url}
+    {s #1 #4 substring$ "doi:"  = {doi.url}
+     {s #1 #7 substring$ "mailto:" = {mailto.url} {unknown.url} if$}
+      if$}
      if$}
+    if$}
    if$}
- if$
+  if$
  'url.type :=
 }
 
@@ -1000,10 +937,13 @@ FUNCTION {filter.url.tex}
     {s url.pos #1 substring$
     duplicate$ "_" = {pop$ "\underline{\ }" } 'skip$ if$
     duplicate$ "%" = {pop$ "\%" } 'skip$ if$
+    duplicate$ "&" = {pop$ "\&" } 'skip$ if$
     duplicate$ "~" = {pop$ "\~{}" } 'skip$ if$
     duplicate$ "/" = {pop$ "\-/" } 'skip$ if$
     duplicate$ "." = {pop$ "\-." } 'skip$ if$
     duplicate$ "\" = {pop$ "{\textbackslash}" } 'skip$ if$
+    duplicate$ "#" = {pop$ "\#" } 'skip$ if$
+    duplicate$ "_" = {pop$ "\_" } 'skip$ if$
     t swap$ * 't :=
     url.pos #1 + 'url.pos :=
     }
@@ -1016,6 +956,8 @@ FUNCTION {filter.url.html}
   {url.pos url.length <}
     {s url.pos #1 substring$
     duplicate$ "%" = {pop$ "\%" } 'skip$ if$
+    duplicate$ "#" = {pop$ "\#" } 'skip$ if$
+    duplicate$ "_" = {pop$ "\_" } 'skip$ if$
     t swap$ * 't :=
     url.pos #1 + 'url.pos :=
     }
@@ -1032,7 +974,7 @@ FUNCTION {compose.url}
    abnt.doi abnt.doi.expand.to.url = 'expand.doi {s} if$
    * "$>$" *} 'skip$ if$
  abnt.url.package #1 =
-   { "\url{" * s * "}" *} 'skip$ if$
+   { "\url{" * filter.url.html * "}" *} 'skip$ if$
  abnt.url.package #2 =
    {url.type http.url =
      {"\htmladdnormallink{$<$" * filter.url.tex * "$>$}{" * filter.url.html * "}" *}
@@ -1696,9 +1638,10 @@ FUNCTION {article}
   iso.year.label
   format.title "title" output.check new.block
   format.journal output
-  iso.date.place {format.date output} 'skip$ if$
+  iso.date.place {format.year output} 'skip$ if$
+  %iso.date.place {format.date output} 'skip$ if$
   %iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-  %               {format.year output} if$
+  %               {format.year output new.sentence} if$
   section "section" bibinfo.check output.dash
   publisher "publisher" bibinfo.check output
   address "address" bibinfo.check output
@@ -1722,6 +1665,7 @@ FUNCTION {book}
   format.publisher.address output
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
                  {format.year output new.sentence} if$
+  format.volume output new.sentence
   format.book.pages output
   format.illustrated
   format.dimensions  new.sentence
@@ -1744,7 +1688,7 @@ FUNCTION {booklet}
   format.bvolume output
   %format.date output  new.sentence
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-                 {format.year output} if$
+                 {format.year output new.sentence} if$
   format.book.pages output new.sentence
   format.volume.number.series output new.sentence
   format.note output
@@ -1850,7 +1794,7 @@ FUNCTION {manual}
   format.address output
   %format.date output new.sentence
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-                 {format.year output} if$
+                 {format.year output new.sentence} if$
   format.bvolume.if.no.series output
   format.book.pages output new.sentence
   format.volume.number.series output new.sentence
@@ -1869,7 +1813,7 @@ FUNCTION {misc}
   format.publisher.address.relax output
   %format.date output  new.block
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-                 {format.year output} if$
+                 {format.year output new.sentence} if$
   format.book.pages output new.sentence
   format.illustrated
   format.dimensions  new.sentence
@@ -1890,7 +1834,7 @@ FUNCTION {patent}
   format.furtherresp new.sentence
   %format.date output  new.block
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-                 {format.year output} if$
+                 {format.year output new.sentence} if$
   format.patent.number output
   format.howpublished output  new.block
   format.note output  new.block
@@ -1988,7 +1932,7 @@ FUNCTION {unpublished}
   format.note "note" output.check  new.sentence
   %format.date output new.sentence
   iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
-                 {format.year output} if$
+                 {format.year output new.sentence} if$
   format.url
   fin.entry
 }
@@ -2206,11 +2150,11 @@ FUNCTION {end.bib}
 EXECUTE {end.bib}
 FUNCTION {apresentacao}
 { "+---------------------------------------------------------+"
-  "| http://abntex2.googlecode.com                           |"
+  "| http://www.abntex.net.br/                               |"
   "| Em caso de dúvidas ou problemas com este estilo procure |"
   abnt.alf
- {"| Estilo bibliográfico abnt-alf.bst versão " abnt.bst.revision * "          |" *}
- {"| Estilo bibliográfico abnt-num.bst versão " abnt.bst.revision * "          |" *}
+ {"| Estilo bibliográfico abntex2-alf.bst versão " abnt.bst.revision * "          |" *}
+ {"| Estilo bibliográfico abntex2-num.bst versão " abnt.bst.revision * "          |" *}
  if$
   "+---------------------------------------------------------+"
   stack$
