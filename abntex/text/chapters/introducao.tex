@@ -51,6 +51,7 @@ As tabelas também podem ser referenciadas como se fossem seções ou figuras, p
 
 \begin{table}[htb]
 \centering
+\caption{Exemplo de transações de mercado.}
 \begin{tabular}{c|c}
 \hline
 \textbf{\small TID} & \textbf{\small Conjunto de Itens}\\\hline \hline
@@ -60,7 +61,6 @@ As tabelas também podem ser referenciadas como se fossem seções ou figuras, p
 {\small 4} & {\small \{Pão, Leite, Fralda, Cerveja\}}\\\hline
 {\small 5} & {\small \{Pão, Leite, Fralda, Coca-Cola\}}\\\hline
 \end{tabular}
-\caption{Exemplo de transações de mercado.}
 \label{t.transacao_mercado}
 \end{table}
 
@@ -228,7 +228,7 @@ Existem diversos sites no Google que contém códigos de símbolos e funções m
 
 Aqui está um exemplo de como podemos referenciar as bibliografias utilizadas no trabalho. Elas são guardadas na forma de metadados (tags) no arquivo .bib a qual é importada no projeto principal (projeto.tex).
 
-E podemos citá-las de acordo com os identificadores atribuídos para cada referência, por exemplo,~\cite{stonebraker93} e~\cite{rocha09}.
+E podemos citá-las de acordo com os identificadores atribuídos para cada referência, por exemplo,~\cite{stonebraker93} ,~\cite{rocha09} e~\cite{keras}.
 
 Após citar um item de referência bibliográfica com o comando ``cite'', ela será automaticamente padronizada e incluída na página de Referências de seu arquivo. Atualmente os maiores sites portadores de artigos, periódicos, dentre outros (IEEE, Springer, etc) já conseguem exportar a publicação desejado no formato BibTeX, sendo facilmente adicionado ao arquivo .bib de seu trabalho.
 
@@ -246,6 +246,8 @@ De acordo com \acs{ABNT}...
 
 \sigla{UNESP}{Universidade Estadual Paulista "Júlio de Mesquita Filho" }
 
+\sigla{ONU}{Organição Nacional da União}
+
 \sigla{abnTeX}{ABsurdas Normas para TeX}
 
 \simbolo{gama}{$ \Gamma $}{Letra grega Gama}, \simbolo{lambda}{$ \Lambda $}{Lambda}
@@ -258,3 +260,10 @@ De acordo com \acs{ABNT}...
 
 A constante \gls{pi}... 
  
+\section{Notas}
+\begin{itemize}
+    \item O título de quadros e tabelas são sempre em cima.
+    \item Sempre que possível, utilize o comando autoref.
+    \item todas as figuras da monografia precisam estar referenciadas no texto pelo menos uma vez.
+    \item 
+\end{itemize}
