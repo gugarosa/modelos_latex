@@ -243,3 +243,6 @@ TSWLatexianTemp*
 
 # linux directory temp files
 .directory 
+
+# MacOS
+**/*.DS_Store
