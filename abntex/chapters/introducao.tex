@@ -47,7 +47,7 @@ Também há mais um nível que pode ser criado com o comando ``subsubsection''.
 \section{Tabelas}
 \label{s.tabelas}
 
-As tabelas também podem ser referenciadas como se fossem seções ou figuras, por exemplo, esta é a Tabela~\ref{t.transacao_mercado}.
+As tabelas também podem ser referenciadas como se fossem seções ou figuras, por exemplo, esta é a Tabela~\ref{t.transacao-mercado}.
 
 \begin{table}[htb]
 \centering
@@ -61,7 +61,7 @@ As tabelas também podem ser referenciadas como se fossem seções ou figuras, p
 {\small 4} & {\small \{Pão, Leite, Fralda, Cerveja\}}\\\hline
 {\small 5} & {\small \{Pão, Leite, Fralda, Coca-Cola\}}\\\hline
 \end{tabular}
-\label{t.transacao_mercado}
+\label{t.transacao-mercado}
 \end{table}
 
 Quando uma tabela é criada com begin\{table\}, ela é automaticamente adicionada à Lista de Tabelas.
@@ -72,7 +72,7 @@ Este modelo vem com o ambiente \texttt{quadro} e impressão de Lista de quadros
 configurados por padrão. Verifique um exemplo de utilização:
 
 \begin{quadro}[htb]
-\caption{\label{quadro_exemplo}Exemplo de quadro}
+\caption{\label{quadro-exemplo}Exemplo de quadro}
 \begin{tabular}{|c|c|c|c|}
 	\hline
 	\textbf{Pessoa} & \textbf{Idade} & \textbf{Peso} & \textbf{Altura} \\ \hline
@@ -86,8 +86,8 @@ configurados por padrão. Verifique um exemplo de utilização:
 
 Este parágrafo apresenta como referenciar o quadro no texto, requisito
 obrigatório da ABNT. 
-Primeira opção, utilizando \texttt{autoref}: Ver o \autoref{quadro_exemplo}. 
-Segunda opção, utilizando  \texttt{ref}: Ver o Quadro \ref{quadro_exemplo}.
+Primeira opção, utilizando \texttt{autoref}: Ver o \autoref{quadro-exemplo}. 
+Segunda opção, utilizando  \texttt{ref}: Ver o Quadro \ref{quadro-exemplo}.
 
 
 
@@ -95,6 +95,10 @@ Segunda opção, utilizando  \texttt{ref}: Ver o Quadro \ref{quadro_exemplo}.
 \label{s.algoritmos}
 
 O pacote nicealgo incluído nos arquivos desse projeto é responsável por disponibilizar comandos extras, não inerentes ao básico TeX, para a criação de algoritmos. Um exemplo do Algoritmo~\ref{a.algoritmo} é escrito a seguir. Eles também pode ser referenciados como se fossem tabelas ou figuras.
+
+
+\par
+\needspace{20\baselineskip}
 
 \begin{nicealgo}{a.algoritmo}
 \naTITLE{Algoritmo AIS}
@@ -126,12 +130,51 @@ O pacote nicealgo incluído nos arquivos desse projeto é responsável por dispo
 \naEND{}
 \end{nicealgo}
 
+
+\section{Códigos}
+\label{s.codigos}
+
+Códigos podem ser criados a partir do comando begin\{lstlisting\} e end\{lstlisting\}. É possível passar parâmetros para essa função, como por exemplo, a linguage do código e a legenda dele. Por exemplo: \char`\\begin\{lstlisting\}[language=Python, caption=Exemplo de código em Python]
+
+\begin{lstlisting}[language=Python, caption=Exemplo de código em Python]
+import numpy as np
+ 
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+ 
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+ 
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+ 
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+ 
+                VT = np.zeros((n*m,1), int)
+ 
+    return M
+\end{lstlisting}
+
+
 \section{Figuras}
 \label{s.figuras}
 
 Este parágrafo apresenta como referenciar figura no texto, requisito obrigatório da ABNT.
-Primeira opção, utilizando \texttt{autoref}: Ver a \autoref{f.disposicao_mercado}. 
-Segunda opção, utilizando  \texttt{ref}: Ver a Figura \ref{f.disposicao_mercado}.
+Primeira opção, utilizando \texttt{autoref}: Ver a \autoref{f.disposicao-mercado}. 
+Segunda opção, utilizando  \texttt{ref}: Ver a Figura \ref{f.disposicao-mercado}.
 
 Atente-se ao código para perceber um possível redimensionamento com a função scale e o caminho de onde a figura deve ser retirada.
 
@@ -140,59 +183,18 @@ Quando uma figura é criada com begin\{figure\}, ela é automaticamente adiciona
 \begin{figure}[htbp]
 \caption{\small Exemplo do ambiente TeXworks.}
 \centering
-\includegraphics[scale=0.50]{figs/tex_exemplo.png}
-\label{f.disposicao_mercado}
+\includegraphics[scale=0.50]{figs/tex-exemplo.png}
+\label{f.disposicao-mercado}
 \legend{\small Fonte: Elaborada pelo autor.}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
+    \caption{Imagem 1 da minipage} \label{fig-minipage-imagem1}
     \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
     \legend{Fonte: Produzido pelos autores}
 \end{figure}
 
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{1}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{2}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{3}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{4}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{5}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \caption{Imagem 1 da minipage} \label{6}
-    \includegraphics[scale=0.9]{figs/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-\end{figure}
 
 \section{Equações}
 \label{s.equacoes}
@@ -202,12 +204,12 @@ O TeX também é muito famoso pela forma em que consegue tratar funções e sím
 Também podemos definir equações utilizando os comandos begin\{equation\} e end\{equation\}. Por exemplo:
 
 \begin{equation}
-\label{e.energy_rbm}
+\label{e.energy-rbm}
 E(\textbf{v},\textbf{h})=-\sum_{i=1}^ma_iv_i-\sum_{j=1}^nb_jh_j-\sum_{i=1}^m\sum_{j=1}^nv_ih_jw_{ij},
 \end{equation}
 
 \begin{equation}
-\label{e.probability_configuration}
+\label{e.probability-configuration}
 P(\textbf{v},\textbf{h})=\frac{e^{-E(\textbf{v},\textbf{h})}}{\displaystyle\sum_{\textbf{v},\textbf{h}}e^{-E(\textbf{v},\textbf{h})}},
 \end{equation}
 
@@ -235,6 +237,7 @@ Após citar um item de referência bibliográfica com o comando ``cite'', ela se
 Muitas vezes não é possível exportar publicações diretamente para o formato BibTeX, como, por exemplo, na citação de sites. Para mais informações sobre como criar manualmente arquivos BibTeX: \url{https://github.com/abntex/limarka/wiki/Adicionando-refer%C3%AAncias}
 
 \section{Entrada de Siglas e Símbolos}
+Quando uma sigla ou símbolo são criados com os comandos abaixo, elas são automaticamente adicionadas à Lista de abreviaturas/siglas ou Lista de símbolos.
 
 \sigla{ABNT}{Associação Brasileira de Normas Técnicas}, 
 
@@ -265,5 +268,4 @@ A constante \gls{pi}...
     \item O título de quadros e tabelas são sempre em cima.
     \item Sempre que possível, utilize o comando autoref.
     \item todas as figuras da monografia precisam estar referenciadas no texto pelo menos uma vez.
-    \item 
 \end{itemize}

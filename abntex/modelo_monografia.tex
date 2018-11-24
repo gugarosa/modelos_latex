@@ -48,9 +48,18 @@
 \usepackage[alf, abnt-etal-list=0 ]{lib/abntex2cite}	% Citações padrão ABNT
 \usepackage[br]{lib/nicealgo}       % Pacote para criação de algoritmos
 \usepackage{lib/customizacoes}      % Pacote de customizações do abntex2
+
+\usepackage{listings}
+\usepackage[normalem]{ulem} % Strikethrough package
+
 % --------------------------------------------------------
 % CONFIGURAÇÕES DE PACOTES
 % --------------------------------------------------------
+
+% Configurações do pacote listing
+\renewcommand{\lstlistingname}{Código} %Mudança no caption do listing para Código
+\renewcommand{\lstlistlistingname}{Lista de códigos} %Mudança no caption da lista de listings.
+
 
 % Configurações do pacote backref
 \renewcommand{\familydefault}{\sfdefault}
@@ -76,7 +85,7 @@
 \titulo{Título do Texto}
 \autor{Nome do Autor}
 \local{Bauru}
-\data{Maio/2015}
+\data{Outubro/2018}
 \orientador{Prof. Dr. Seu Orientador}
 \instituicao{%
   Universidade Estadual Paulista ``Júlio de Mesquita Filho''
@@ -139,7 +148,7 @@
 \renewcommand{\cftquadroname}{\quadroname\space} 
 \renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
 
-\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+\setfloatlocations{quadro}{hbtp}
 % ---
 
 
@@ -256,13 +265,26 @@
 \end{folhadeaprovacao}
 
 % Dedicatória
-\input{text/pre-text/dedicatoria.tex}
+\begin{dedicatoria}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{Espaço destinado à dedicátoria do texto.} 
+	\end{flushright}
+\end{dedicatoria}
 
 % Agradecimentos
-\input{text/pre-text/agradecimento.tex}
+\begin{agradecimentos}
+Espaço destinado aos agradecimentos.
+\end{agradecimentos}
 
 % Epígrafe
-\input{text/pre-text/epigrafe.tex}
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{Espaço destinado à epígrafe.}\\
+		Não esquecer autor
+	\end{flushright}
+\end{epigrafe}
 
 
 % --------------------------------------------------------
@@ -271,10 +293,18 @@
 
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
-\input{text/pre-text/resumoPT.tex}
+\begin{resumo}
+Espaço destinado à escrita do resumo.\\
+\textbf{Palavras-chave:} Palavras-chave de seu resumo.
+\end{resumo}
 
 % resumo em inglês
-\input{text/pre-text/resumoEN.tex}
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+Abstract area.\\
+\textbf{Keywords:} Abstract keywords.
+ \end{otherlanguage*}
+\end{resumo}
 
 
 % --------------------------------------------------------
@@ -286,10 +316,9 @@
 \listoffigures*
 \cleardoublepage
 
-
-% ---
-% inserir lista de quadros
-% ---
+% --------------------------------------------------------
+% LISTA DE QUADROS
+% --------------------------------------------------------
 \pdfbookmark[0]{\listofquadrosname}{loq}
 \listofquadros*
 \cleardoublepage
@@ -304,6 +333,14 @@
 \listoftables*
 \cleardoublepage
 
+% --------------------------------------------------------
+% LISTA DE CÓDIGOS
+% --------------------------------------------------------
+ 
+\counterwithout{lstlisting}{section}
+\pdfbookmark[0]{\lstlistlistingname}{lof}
+\lstlistoflistings
+\cleardoublepage
 
 % --------------------------------------------------------
 % LISTA DE ABREVIATURAS E SIGLAS
@@ -336,8 +373,8 @@
 \pagestyle{simple}
 
 % Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
-\input{text/chapters/introducao}
-\input{text/chapters/conclusao}
+\input{chapters/introducao}
+\input{chapters/conclusao}
 
 
 % --------------------------------------------------------
@@ -351,7 +388,7 @@
 % REFERÊNCIAS BIBLIOGRÁFICAS
 % --------------------------------------------------------
 
-\bibliography{text/chapters/referencias}
+\bibliography{chapters/referencias}
 
 
 % --------------------------------------------------------

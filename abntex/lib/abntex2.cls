@@ -850,6 +850,7 @@
 % ---
 % Lista de abreviaturas e siglas
 \newenvironment{siglas}{%
+  \pretextualchapter{\listadesiglasname}
   \begin{symbols}
 }{%
   \end{symbols}
