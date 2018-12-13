@@ -1,0 +1,114 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade XXXX
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is SEU_NOME, SEU_EMAIL
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---
+
+\ProvidesPackage{customizacoes}[2014/09/01 Criacao desta customizacao do abnTeX2]
+
+\newcommand{\ImprimirAutor}{\expandafter\expandafter{\imprimirautor}}
+\newcommand{\ImprimirLocal}{\expandafter\expandafter{\imprimirlocal}}
+\newcommand{\ImprimirTitulo}{\expandafter\expandafter{\imprimirtitulo}}
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+      \ABNTEXchapterfont{
+       \begin{figure}[h]
+      	 \centering
+		 \includegraphics[scale=0.1]{figs/unesp.png}
+	    \end{figure}
+        {\large \uppercase {\textbf{Universidade Estadual Paulista\\"Júlio de Mesquita Filho"}} \\Câmpus São José do Rio Preto}
+
+        %\vspace*{0.5cm}
+
+        %{\large \uppercase {Departamento de Computação}}
+
+        \vspace*{1cm}
+
+        {\large \ImprimirAutor}
+
+        %{\ABNTEXchapterfont\large\ImprimirAutor}
+
+        \vfill
+          \begin{center}
+            \bfseries\LARGE \ImprimirTitulo
+          \end{center}
+        \vfill
+
+        \ImprimirLocal \\ \imprimirdata
+      }
+  \end{capa}
+}
+
+
+% folha de rosto 
+
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+    \center
+    \ABNTEXchapterfont{
+      {\large\ImprimirAutor}
+
+      \vspace*{\fill}\vspace*{\fill}
+
+      \begin{center}
+        \bfseries\Large\ImprimirTitulo
+      \end{center}
+
+      \vspace*{\fill}
+
+      \abntex@ifnotempty{\imprimirpreambulo}{%
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+          \SingleSpacing
+          \imprimirpreambulo
+          \\~\\
+          Financiadora: FAPESP - Proc. 2019/00000=0
+          \\~\\
+          Orientador: \imprimirorientador
+        \end{minipage}%
+        \vspace*{\fill}
+      }%
+
+    
+
+      \abntex@ifnotempty{\imprimircoorientador}{%
+        {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+      }%
+
+      \vspace*{\fill}
+
+      {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+
+      {\ImprimirLocal\\\imprimirdata}
+    }
+  \end{center}
+}
+
+\makeatother
+
+
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---

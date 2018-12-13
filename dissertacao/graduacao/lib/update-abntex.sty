@@ -1,0 +1,92 @@
+\usepackage[%
+%xindy={language=portuguese}, %para usar o xindy ao invés do makeindex
+subentrycounter,
+seeautonumberlist,
+nonumberlist,
+nogroupskip,
+shortcuts,   % criação de atalhos
+acronym,  % criação de acrônimos  	
+translate=babel, % Faz o papel de \providetranslation
+nopostdot  % Não é colocado ponto ao final da entrada
+]{glossaries}
+
+
+\renewcommand{\glossarypreamble}{\vspace{-0.2cm}}  % Retira o espaço proviniente do estilo
+
+
+% Criação de estilo
+
+\newglossarystyle{mylong1}{% modificado de https://tex.stackexchange.com/a/166209/151962
+	\setglossarystyle{long}%
+	\renewenvironment{theglossary}%
+	{\begin{longtable}[l]{@{}p{\dimexpr 3.0cm-\tabcolsep}p{0.78\hsize}}}% <-- change the value here
+		{\end{longtable}}%
+	\addtocounter{table}{-1}
+}
+
+
+
+% Só um pequeno récuo em relação ao primeiro
+\newglossarystyle{mylong2}{% modificado de https://tex.stackexchange.com/a/166209/151962
+	\setglossarystyle{long}%
+	\renewenvironment{theglossary}%
+	{\begin{longtable}[l]{@{}p{\dimexpr 2.0cm-\tabcolsep}p{0.86\hsize}}}% <-- change the value here
+		{\end{longtable}}%
+	\addtocounter{table}{-1}
+}
+
+
+
+% Criando o comando sigla. Cria a descrição da sigla e a sigla entre parênteses 
+% #1 é o atalho da sigla e a sigla. #2 é a descrição 
+\newcommand{\sigla}[2]{\newacronym{#1}{#1}{#2}\acrfull{#1}}
+
+% Só dá entrada na lista. Ainda não funciona com o limarka
+\newcommand{\siglalista}[2]{\newacronym{#1}{#1}{#2}}  
+
+
+
+\newglossary{simbolos}{simbolos}{sbl}{simbolos}
+
+% Criando o comando simbolo. Imprime o símbolo e sua descrição só é mostrada na lista
+% #1 é o atalho. #2 é símbolo. #3 descrição 
+\newcommand{\simbolo}[3]{\newglossaryentry{#1}{%
+						type=simbolos, 
+						name=#2, 
+						description=#3,
+						sort=def}\gls{#1}}
+
+% Só dá entrada na lista. Ainda não funciona com o limarka
+\newcommand{\simbololista}[3]{\newglossaryentry{#1}{%
+							type=simbolos, 
+							name=#2, 
+							description=#3,
+							sort=def}}
+
+% 
+\newcommand{\imprimirlistadesiglas}{%
+	    \pdfbookmark[0]{\listadesiglasname}{acn}	
+		\printacronyms[%
+				style=mylong1,
+				title={\listadesiglasname \vspace{-0.2cm}}  % A lista de siglas ainda fica com um espaço a mais
+			  ]
+		\cleardoublepage
+}
+
+\newcommand{\imprimirlistadesimbolos}{%
+   	\pdfbookmark[0]{\listadesimbolosname}{sbl}					
+	\printglossary[%
+			type=simbolos,
+			title={\listadesimbolosname }, 
+			style=mylong2
+			]
+
+	\cleardoublepage
+}
+
+
+\newcommand{\imprimirglossario}{
+    \cleardoublepage
+   	\pdfbookmark[0]{\glossaryname}{glo}					
+	\printglossary[title={\glossaryname}]
+}
