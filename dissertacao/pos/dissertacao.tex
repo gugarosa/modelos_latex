@@ -99,8 +99,8 @@
 % ---
 % Configurações de aparência do PDF final
 
-% alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{0,0,0}
+% alterando o aspecto da cor preta
+\definecolor{black}{RGB}{0,0,0}
 
 % informações do PDF
 \makeatletter
@@ -112,10 +112,10 @@
 	    pdfcreator={LaTeX com abnTeX2},
 		pdfkeywords={abnt}{latex}{abntex}{abntex2}{dissertação}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
     	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
+		urlcolor=black,
 		bookmarksdepth=4
 }
 \makeatother
@@ -186,40 +186,40 @@
 	\sffamily
 	\vspace*{\fill}					% Posição vertical
 	\begin{center}					% Minipage Centralizado
-	\fbox{\begin{minipage}[c][8cm]{14cm}		% Largura
-	\small
-	\hspace{1cm} Sobrenome, Autor.
-	%Sobrenome, Nome do autor
-	
-	\hspace{1.5cm} \imprimirtitulo~/ \imprimirautor. --
-	\imprimirlocal, \imprimirdata
-	
-	\hspace{1.5cm} \pageref{LastPage} f. : il., tabs.\\
-	
-	\hspace{1.5cm} \imprimirorientadorRotulo~\imprimirorientador
-	
-	\hspace{1.5cm}
-	Dissertação (mestrado) - Universidade Estadual Paulista ``Júlio de Mesquita Filho", Instituto de Biociências, Letras e Ciências Exatas
-	
-	\hspace{1.5cm}
-	\\
-	
-	\hspace{1.5cm}
-		1. Item 1.
-		2. Item 2.
-		3. Item 3.
-		I. Sobrenome, Nome do Orientador
-		II. Universidade Estadual Paulista ``Júlio de Mesquita Filho", Instituto de Biociências, Letras e Ciências Exatas.
-		III. Título.
-		\begin{flushright}
-		CDU -- 518.72:76	
-		\end{flushright}
-
-	\end{minipage}}
-	
-	Ficha catalográfica elaborada pela biblioteca do IBILCE
-	\\
-	UNESP - Câmpus de São José do Rio Preto
+		\fbox{\begin{minipage}[c][8cm]{14cm}		% Largura
+			\small
+			\hspace{1cm} Sobrenome, Autor.
+			%Sobrenome, Nome do autor
+				
+			\hspace{1.5cm} \imprimirtitulo~/ \imprimirautor. --
+			\imprimirlocal, \imprimirdata
+				
+			\hspace{1.5cm} \pageref{LastPage} f. : il., tabs.\\
+				
+			\hspace{1.5cm} \imprimirorientadorRotulo~\imprimirorientador
+				
+			\hspace{1.5cm}
+			Dissertação (mestrado) - Universidade Estadual Paulista ``Júlio de Mesquita Filho", Instituto de Biociências, Letras e Ciências Exatas
+				
+			\hspace{1.5cm}
+			\\
+				
+			\hspace{1.5cm}
+			1. Item 1.
+			2. Item 2.
+			3. Item 3.
+			I. Sobrenome, Nome do Orientador
+			II. Universidade Estadual Paulista ``Júlio de Mesquita Filho", Instituto de Biociências, Letras e Ciências Exatas.
+			III. Título.
+			\begin{flushright}
+				CDU -- 518.72:76	
+			\end{flushright}
+			
+			\end{minipage}}
+			
+		Ficha catalográfica elaborada pela biblioteca do IBILCE
+		\\
+		UNESP - Câmpus de São José do Rio Preto
 	\end{center}
 \end{fichacatalografica}
 % ---
@@ -236,42 +236,42 @@
 % \includepdf{folhadeaprovacao_final.pdf}
 %
 \begin{folhadeaprovacao}
-
-  \begin{center}
-    {\ABNTEXchapterfont\large\imprimirautor}
-
-    \vspace*{\fill}\vspace*{\fill}
-    \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-    \end{center}
-    \vspace*{\fill}
-    
-    \hspace{.45\textwidth}
-    \begin{minipage}{.5\textwidth}
-        \imprimirpreambulo
-        \\~\\
-        Financiadora: FAPESP - Proc. 2019/00000-0
-    \end{minipage}%
-    \vspace*{\fill}
-  \end{center}
-        
-  \center Comissão Examinadora
-  
-  \begin{flushleft}
-   \textbf{\imprimirorientador} \\ UNESP - Câmpus de Bauru \\ Orientador
-   \\~\\
-   \textbf{Convidado Externo} \\ Instituição
-   \\~\\
-   \textbf{Convidado Interno} \\ UNESP - Câmpus de Bauru
-  \end{flushleft}
-      
-   \begin{center}
-    \vspace*{0.5cm}
-    \par
-    {Bauru \\ 1 de janeiro de 2019}
-    \vspace*{1cm}
-  \end{center}
-  
+	
+	\begin{center}
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		\vspace*{\fill}
+		    
+		\hspace{.45\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\imprimirpreambulo
+			\\~\\
+			Financiadora: FAPESP - Proc. 2019/00000-0
+		\end{minipage}%
+		\vspace*{\fill}
+	\end{center}
+	        
+	\center Comissão Examinadora
+	  
+	\begin{flushleft}
+		\textbf{\imprimirorientador} \\ UNESP - Câmpus de Bauru \\ Orientador
+		\\~\\
+		\textbf{Convidado Externo} \\ Instituição
+		\\~\\
+		\textbf{Convidado Interno} \\ UNESP - Câmpus de Bauru
+	\end{flushleft}
+	      
+	\begin{center}
+		\vspace*{0.5cm}
+		\par
+		{São José do Rio Preto \\ 1 de janeiro de 2019}
+		\vspace*{1cm}
+	\end{center}
+	  
 \end{folhadeaprovacao}
 % ---
 
@@ -279,10 +279,10 @@
 % Dedicatória
 % ---
 \begin{dedicatoria}
-   \vspace*{\fill}
-   \centering
-   \noindent
-   \textit{ Dedicatória.} \vspace*{\fill}
+	\vspace*{\fill}
+	\centering
+	\noindent
+	\textit{ Dedicatória.} \vspace*{\fill}
 \end{dedicatoria}
 % ---
 
@@ -290,9 +290,9 @@
 % Agradecimentos
 % ---
 \begin{agradecimentos}
-
-Agradecimentos.
-
+	
+	Agradecimentos.
+	
 \end{agradecimentos}
 % ---
 
@@ -300,7 +300,7 @@ Agradecimentos.
 % Epígrafe
 % ---
 \begin{epigrafe}
-    \vspace*{\fill}
+	\vspace*{\fill}
 	\begin{flushright}
 		\textit{Epígrafe}
 	\end{flushright}
@@ -314,21 +314,21 @@ Agradecimentos.
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-
-Resumo.
-
-\textbf{Palavras-chave:} Palavra 1. Palavra 2.
+	
+	Resumo.
+	
+	\textbf{Palavras-chave:} Palavra 1. Palavra 2.
 \end{resumo}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
- \begin{otherlanguage*}{english}
- 
-Abstract.
-
-\textbf{Keywords:} Keyword1. Keyword2. 
-
- \end{otherlanguage*}
+	\begin{otherlanguage*}{english}
+		 
+		Abstract.
+		
+		\textbf{Keywords:} Keyword1. Keyword2. 
+		
+	\end{otherlanguage*}
 \end{resumo}
 % ---
 
@@ -352,9 +352,9 @@ Abstract.
 % inserir lista de abreviaturas e siglas
 % ---
 \begin{siglas}
-  \item[S1] Sigla 1
-  \item[S2] Sigla 2
-
+	\item[S1] Sigla 1
+	\item[S2] Sigla 2
+	
 \end{siglas}
 % ---
 
