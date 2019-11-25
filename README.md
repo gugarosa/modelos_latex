@@ -28,3 +28,11 @@ Você também pode acessar os modelos online no Overleaf:
  * <a href=https://pt.overleaf.com/read/vfwqmsqxhdhw>fc-unesp-pos</a>
  * <a href=https://pt.overleaf.com/read/shgmvctqfypt>fc-unesp-slides</a>
  * <a href=https://pt.overleaf.com/read/qdphrywznqqb>fc-unesp-poster</a>
+
+---
+
+## Suporte
+
+Nós tentamos fazer o melhor, entretanto, erros e bugs são inevitáveis. Se por acaso algum for encontrado ou quiser reportar um problema, fale conosco por favor! Estamos disponíveis neste repositório ou através do e-mail: gustavo.rosa@unesp.br.
+
+---
