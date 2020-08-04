@@ -1,0 +1,42 @@
+% Uses numbering in table of contents
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+% Defining section page template
+\defbeamertemplate*{section page}{customprogress}{
+	\centering
+	\begin{minipage}{22em}
+		\raggedright
+		\usebeamercolor[fg]{section title}
+		\usebeamerfont{section title}
+		\insertsectionhead\\[-1ex]
+		\usebeamertemplate*{progress bar in section page}
+		\par
+		\ifx\insertsubsectionhead\@empty\else
+			\usebeamercolor[fg]{subsection title}
+			\usebeamerfont{subsection title}
+			\insertsubsectionhead
+		\fi
+	\end{minipage}
+	\par
+	\vspace{\baselineskip}
+}
+
+% Re-defining the section page command
+\renewcommand{\metropolis@enablesectionpage}{
+    \AtBeginSection{
+        \ifbeamer@inframe
+        	\sectionpage
+        \else
+        	\setbeamercolor{background canvas}{bg=main}
+            \frame[plain,c,noframenumbering]{\sectionpage}
+        \fi
+        \setbeamercolor{background canvas}{bg=white}
+    }
+}
+
+% Creating a new section page command
+\newcommand{\customsectionpage}{\metropolis@enablesectionpage}
+
+% Invoking the custom section page
+\customsectionpage

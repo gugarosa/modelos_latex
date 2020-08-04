@@ -1,0 +1,59 @@
+% Defines the document class
+\documentclass[10pt,portuguese]{beamer}
+
+% Defines the theme
+\usetheme{metropolis}
+
+% Imports the pre-defined packages
+\usepackage{styles/packages}
+
+% Imports the pre-defined templates
+\usepackage{styles/templates}
+
+% Imports the pre-defined colors
+\usepackage{styles/colors}
+
+% Imports the first slide's header
+\usepackage{styles/header}
+
+% Defines meta-information about the presentation
+\title{Definição de Template LaTeX}
+\subtitle{Apresentação Final}
+\date{\today}
+\author{Gustavo de Rosa}
+\institute{
+    Universidade Estadual Paulista ``Júlio de Mesquita Filho" (UNESP)
+    \\
+    Faculdade de Ciências (FC) / Departamento de Computação (DCo)
+    \\
+    Bauru, SP - Brasil
+}
+
+% Finishes up the preamble definition and starts the document
+\begin{document}
+
+% Makes up the preamble slide
+\maketitle
+
+% Imports the corresponding slides
+\input{sections/toc.tex}
+\input{sections/introduction.tex}
+\input{sections/background.tex}
+\input{sections/conclusion.tex}
+
+% Defines the references and its slides
+\section*{Referências}
+\begin{frame}[allowframebreaks]
+	\bibliography{references}
+	\bibliographystyle{abbrv}
+\end{frame}
+
+% Defines the standout finishing slide
+\begin{frame}[plain,standout]
+	Perguntas?
+	\\~\\
+	Obrigado pela atenção!
+\end{frame}
+
+% Ends the document
+\end{document}
