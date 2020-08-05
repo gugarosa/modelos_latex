@@ -1,0 +1,38 @@
+% Initializes the left column
+\begin{column}{.45\textwidth}
+	% Creates the coloured section box
+	\begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+		% Creates the mini-page box
+		\begin{minipage}[T]{.95\textwidth} 
+			% Creates an aligning box
+			\parbox[t][\columnheight]{\textwidth}{
+				% Defines 1st block / section
+				\begin{block}{\vspace*{-7pt} \large I -- Introdução}                    
+				\end{block}
+				
+				% Vertical spacing
+				\vspace*{14pt}
+				
+				% Defines 2nd block / section            
+				\begin{block}{\vspace*{-7pt} \large II -- Seção 2}
+				\end{block}   
+				
+				% Vertical spacing
+				\vspace*{14pt}            
+				
+				% Defines 3rd block / section		            
+				\begin{block}{\vspace*{-7pt} \large III -- Seção 3}
+				\end{block}
+				
+				% Vertical spacing
+				\vspace*{14pt}
+				
+				% Defines 4th block / section		        
+				\begin{block}{\vspace*{-7pt} \large Referências}
+					\bibliographystyle{abbrv}
+					\bibliography{references}
+				\end{block}
+			}
+		\end{minipage}
+	\end{beamercolorbox}
+\end{column}

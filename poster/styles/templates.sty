@@ -1,0 +1,80 @@
+% Sets numbered captions
+\setbeamertemplate{caption}[numbered]
+
+% Sets the navigation symbols
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}
+
+% Sets the block
+\setbeamertemplate{block begin}{
+ 	\vskip.75ex
+	\begin{beamercolorbox}[ht=3.5ex,dp=0.5ex,center,leftskip=-1em,colsep*=.75ex]{block title}
+    	\usebeamerfont*{block title}{\phantom{Gg}\insertblocktitle}
+    \end{beamercolorbox}
+	{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+	\usebeamerfont{block body}
+	\begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block body}
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+\setbeamertemplate{block end}{
+	\end{beamercolorbox}
+}
+
+% Sets the headline
+\setbeamertemplate{headline}{
+	\leavevmode
+  	\begin{beamercolorbox}[wd=\paperwidth]{headline}
+    	\begin{columns}[T]
+			\begin{column}{.2\paperwidth}
+				\vskip5ex
+				\begin{center}
+					\includegraphics[width=.5 \linewidth]{figs/fc.png}
+      			\end{center}
+			\end{column}
+			\begin{column}{.2\paperwidth}
+        		\vskip8ex
+        			\begin{center}
+         				\includegraphics[width=.75 \linewidth]{figs/unesp.png}
+        			\end{center}
+        		\vskip2ex
+      		\end{column}
+      		\begin{column}{.6\paperwidth}
+        		\vskip4ex
+        		\raggedleft
+        		\usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[3ex]}
+        		\usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
+        		\usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[2ex]}     
+      		\end{column}
+      		\begin{column}{.02\paperwidth}
+      		\end{column}
+    	\end{columns}
+    	\vskip2ex
+  	\end{beamercolorbox}
+  	\begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    	\rule{0pt}{3pt}
+  	\end{beamercolorbox}
+}
+
+% Sets the footline
+\setbeamertemplate{footline}{
+	\begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    	\rule{0pt}{3pt}
+  	\end{beamercolorbox}
+  	\leavevmode
+  	\begin{beamercolorbox}[ht=4ex,leftskip=1em,rightskip=1em]{author in head/foot}
+    	\hfill
+    	\vskip1ex
+  	\end{beamercolorbox}
+  	\vskip0pt
+  	\begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    	\rule{0pt}{3pt}
+	\end{beamercolorbox}
+}
+
+% Sets back the mode
+\mode<all>
+
+% Adapte the height of itemize
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{itemize item}{\raisebox{0.12ex}{$\blacktriangleright$}\hskip0.1em}
+\setbeamertemplate{itemize subitem}{\raisebox{0.12ex}{$\triangleright$}\hskip0.1em}
