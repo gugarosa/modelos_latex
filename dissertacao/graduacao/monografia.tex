@@ -60,6 +60,9 @@
 \renewcommand{\lstlistingname}{Código} %Mudança no caption do listing para Código
 \renewcommand{\lstlistlistingname}{Lista de códigos} %Mudança no caption da lista de listings.
 
+% Contagem de códigos sem incluir o número do capítulo
+\usepackage{chngcntr}
+\AtBeginDocument{\counterwithout{lstlisting}{chapter}}
 
 % Configurações do pacote backref
 \renewcommand{\familydefault}{\sfdefault}
