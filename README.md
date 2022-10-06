@@ -33,6 +33,6 @@ Você também pode acessar os modelos online no Overleaf:
 
 ## Suporte
 
-Nós tentamos fazer o melhor, entretanto, erros e bugs são inevitáveis. Se por acaso algum for encontrado ou quiser reportar um problema, fale conosco por favor! Estamos disponíveis neste repositório ou através do e-mail: gustavo.rosa@unesp.br.
+Nós tentamos fazer o melhor, entretanto, erros e bugs são inevitáveis. Se por acaso algum for encontrado ou quiser reportar um problema, fale conosco por favor! Estamos disponíveis neste repositório.
 
 ---
